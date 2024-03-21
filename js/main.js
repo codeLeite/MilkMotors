@@ -44,13 +44,22 @@ $(document).ready(function(){
     }
   })
 
-  $('.lista-veiculos button').click(function(){
+  $('.lista-veiculos button').click(function(e){
+    e.preventDefault();
     const destino = $('#contato');
     const nomeVeiculo = $(this).parent().find('h3').text();
 
     $('#veiculo-interesse').val(nomeVeiculo);
 
     $('html').animate({
+      scrollTop: destino.offset().top
+    }, 1000)
+  })
+
+  $('header nav a').click(function(){
+    const destino = $($(this).attr('href'));
+
+    $('html, body').animate({
       scrollTop: destino.offset().top
     }, 1000)
   })
